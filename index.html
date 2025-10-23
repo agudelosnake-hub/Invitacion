@@ -13,61 +13,120 @@
 <meta property="og:url" content="https://TU_ENLACE.vercel.app/">
 
 <style>
+  /* ===== ESTILO NEOMORFISMO ===== */
+  :root {
+    --bg: #e0e5ec;
+    --surface: #f0f2f5;
+    --shadow-light: #ffffff;
+    --shadow-dark: #a3b1c6;
+    --accent: #ff6b9d;
+    --text: #2d3748;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffe6ec, #fff5f7);
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     overflow: hidden;
+    color: var(--text);
+    padding: 20px;
+  }
+
+  /* Tarjeta principal con neomorfismo */
+  .card {
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 32px;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 
+      8px 8px 16px var(--shadow-dark),
+      -8px -8px 16px var(--shadow-light);
+    transition: transform 0.2s ease;
   }
 
   h1 {
-    font-size: 2em;
-    color: #ff5c8a;
-    text-align: center;
+    font-size: 1.8em;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 600;
   }
 
   p {
     font-size: 1.1em;
-    color: #444;
-    text-align: center;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.5;
   }
 
   #botones {
     margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   button {
-    font-size: 1.2em;
+    font-family: inherit;
+    font-size: 1.1em;
     border: none;
-    border-radius: 10px;
-    padding: 12px 25px;
-    margin: 10px;
+    border-radius: 16px;
+    padding: 14px 28px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    outline: none;
+    /* Neumorphism base */
+    background: var(--surface);
+    box-shadow: 
+      4px 4px 8px var(--shadow-dark),
+      -4px -4px 8px var(--shadow-light);
+  }
+
+  button:active {
+    box-shadow: 
+      inset 2px 2px 4px var(--shadow-dark),
+      inset -2px -2px 4px var(--shadow-light);
+    transform: scale(0.98);
   }
 
   #si {
-    background-color: #ff5c8a;
     color: white;
+    background: linear-gradient(135deg, #ff6b9d, #ff8eb3);
+    box-shadow: 
+      4px 4px 8px rgba(163, 177, 198, 0.4),
+      -4px -4px 8px rgba(255, 255, 255, 0.8);
+  }
+
+  #si:active {
+    box-shadow: 
+      inset 2px 2px 4px rgba(163, 177, 198, 0.6),
+      inset -2px -2px 4px rgba(255, 255, 255, 0.8);
   }
 
   #no {
-    background-color: #ccc;
-    color: #333;
-    position: relative;
+    color: var(--text);
   }
 
   #mensajeFinal {
     display: none;
-    font-size: 1.3em;
-    color: #ff5c8a;
-    text-align: center;
+    font-size: 1.2em;
+    color: var(--accent);
     margin-top: 20px;
+    line-height: 1.5;
   }
 
   /* Pantalla inicial */
@@ -75,29 +134,23 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(135deg, #ffd6e0, #fff);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     z-index: 10;
+    background: var(--bg);
+    padding: 20px;
   }
 
-  #inicio button {
-    background-color: #ff5c8a;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.3em;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
+  #inicio .card {
+    animation: fadeIn 0.6s ease-out;
   }
 
   #contenido {
-    display: none;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    transition: opacity 0.8s ease-in-out;
   }
 
   canvas#confetti-canvas {
@@ -108,17 +161,40 @@
     height: 100%;
     pointer-events: none !important;
   }
+
+  /* Corazones flotantes */
+  .corazon {
+    position: fixed;
+    bottom: -10px;
+    color: var(--accent);
+    font-size: 24px;
+    animation: subir 6s linear infinite;
+    opacity: 0.8;
+    z-index: 5;
+  }
+
+  @keyframes subir {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
 </style>
 </head>
 <body>
   <!-- Pantalla inicial -->
   <div id="inicio">
-    <h2>🎸 Toca aquí para empezar la sorpresa 💕</h2>
-    <button id="empezar">Comenzar</button>
+    <div class="card">
+      <h2>🎸 Toca aquí para empezar la sorpresa 💕</h2>
+      <button id="empezar">Comenzar</button>
+    </div>
   </div>
 
   <!-- Contenido principal -->
-  <div id="contenido">
+  <div id="contenido" class="card">
     <h1>💌 Cita Sorpresa para mi Flaquita 💕</h1>
     <p>¿Quieres venir a una cita secreta conmigo? 😍</p>
     <p id="subeVolumen">(Sube el volumen 🔊)</p>
@@ -137,13 +213,17 @@
 
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- 🎵 Audio -->
-  <audio id="musica" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2024/02/06/audio_6b71e25b54.mp3?filename=island-rhythms-soft-acoustic-guitar-background-music-139925.mp3" type="audio/mpeg">
+  <!-- 🎵 Audios -->
+  <audio id="musica" preload="auto" loop>
+    <source src="whistling-ukulele-pop-playful-kids-background-422933.mp3" type="audio/mpeg">
   </audio>
 
 <script>
+  // Elementos del DOM
   const musica = document.getElementById('musica');
+  const sonidoPop = new Audio('pop-94319.mp3');
+  sonidoPop.volume = 0.4;
+
   const inicio = document.getElementById('inicio');
   const contenido = document.getElementById('contenido');
   const botonEmpezar = document.getElementById('empezar');
@@ -151,34 +231,49 @@
   const botonSi = document.getElementById('si');
   const mensajeFinal = document.getElementById('mensajeFinal');
 
-  // 💡 Intento de reproducción automática al tocar "Comenzar"
-  botonEmpezar.addEventListener('click', async () => {
+  botonEmpezar.addEventListener('click', playMusic);
+
+  function playMusic() {
     inicio.style.display = 'none';
     contenido.style.display = 'block';
     setTimeout(() => contenido.style.opacity = 1, 100);
-    try {
-      await musica.play();
-    } catch (err) {
-      // 🔊 Si falla, mostramos un aviso para desbloquear manualmente
-      const aviso = document.createElement('button');
-      aviso.textContent = "🔊 Toca aquí para activar el sonido";
-      aviso.style.background = "#ff5c8a";
-      aviso.style.color = "white";
-      aviso.style.fontSize = "1.2em";
-      aviso.style.padding = "10px 20px";
-      aviso.style.border = "none";
-      aviso.style.borderRadius = "10px";
-      aviso.style.cursor = "pointer";
-      aviso.style.marginTop = "20px";
-      document.body.appendChild(aviso);
-      aviso.addEventListener('click', () => {
-        musica.play();
-        aviso.remove();
-      });
-    }
-  });
 
-  // 😂 Frases del botón "No"
+    musica.play().catch(err => {
+      console.warn("No se pudo reproducir la música:", err);
+      mostrarBotonAudio();
+    });
+
+    setInterval(crearCorazon, 600);
+  }
+
+  function mostrarBotonAudio() {
+    if (document.getElementById('btn-activar-audio')) return;
+    const btn = document.createElement('button');
+    btn.id = 'btn-activar-audio';
+    btn.textContent = '🔊 Activa el sonido';
+    btn.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.1em;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      z-index: 20;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 4px 4px 8px var(--shadow-dark), -4px -4px 8px var(--shadow-light);
+    `;
+    document.body.appendChild(btn);
+    btn.addEventListener('click', () => {
+      musica.play().then(() => btn.remove()).catch(console.error);
+    });
+  }
+
+  // Frases del botón "No"
   const frasesNo = [
     "¿Segura? 😏","Piénsalo otra vez 💭","No puedes decirme que no 😜",
     "Vamosss, di que sí 💘","Me romperás el corazón 💔","Inténtalo de nuevo 😅",
@@ -198,22 +293,27 @@
     const x = Math.random() * 200 - 100;
     const y = Math.random() * 200 - 100;
     botonNo.style.transform = `translate(${x}px, ${y}px)`;
-
-    // 🔈 Sonido "pop" cada vez que dice No
-    const pop = new Audio("https://cdn.pixabay.com/download/audio/2022/03/15/audio_c28e4004f4.mp3?filename=pop-94319.mp3");
-    pop.volume = 0.4;
-    pop.play().catch(()=>{});
+    reproducirPop();
   });
 
-  // 💕 Botón "Sí"
   botonSi.addEventListener('click', () => {
     mensajeFinal.style.display = 'block';
     lanzarConfetti();
-    musica.play(); // vuelve a intentar reproducir
+    reproducirPop();
+    musica.play().catch(() => {});
     window.open('https://wa.me/573187447485?text=%C2%A1Acepto%20la%20cita%20sorpresa%20😍!', '_blank');
   });
 
-  // 🎉 Confetti
+  function reproducirPop() {
+    sonidoPop.currentTime = 0;
+    sonidoPop.play().catch(() => {
+      const fallback = new Audio('pop-94319.mp3');
+      fallback.volume = 0.4;
+      fallback.play().catch(() => {});
+    });
+  }
+
+  // Confeti
   function lanzarConfetti() {
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
@@ -246,6 +346,17 @@
       });
     }
     setInterval(draw, 30);
+  }
+
+  function crearCorazon() {
+    const corazon = document.createElement('div');
+    corazon.classList.add('corazon');
+    corazon.textContent = "💖";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (20 + Math.random() * 20) + "px";
+    corazon.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(corazon);
+    setTimeout(() => corazon.remove(), 7000);
   }
 </script>
 </body>
