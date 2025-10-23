@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💌 Cita Sorpresa para mi Flaquita 💕</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e0, #fff0f5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    h1 {
+      color: #d63384;
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 0.3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h2 {
+      color: #ff6b81;
+      text-align: center;
+      margin-bottom: 1.5em;
+      font-size: 1.2em;
+      animation: fadeIn 2s ease-in-out 1s;
+    }
+
+    button {
+      font-size: 1.1em;
+      border: none;
+      padding: 0.8em 1.4em;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin: 0.5em;
+    }
+
+    #yesBtn {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      background-color: #ff1493;
+      transform: scale(1.05);
+    }
+
+    #noBtn {
+      background-color: #fff;
+      color: #ff69b4;
+      border: 2px solid #ff69b4;
+      position: relative;
+    }
+
+    #noBtn:hover {
+      background-color: #ffb6c1;
+      transform: scale(1.05);
+    }
+
+    #message {
+      display: none;
+      text-align: center;
+      color: #d63384;
+      font-size: 1.3em;
+      margin-top: 1.5em;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    #volumeHint {
+      position: absolute;
+      top: 10px;
+      font-size: 0.9em;
+      color: #d63384;
+      animation: fadeIn 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #startMusic {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      border: none;
+      background: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="volumeHint">(Sube el volumen 🔊)</div>
+  <h1>💌 Cita Sorpresa para mi Flaquita 💕</h1>
+  <h2>Flaquita, te invito a una cita sorpresa conmigo 💖</h2>
+
+  <div>
+    <button id="yesBtn">Sí, quiero ir 💕</button>
+    <button id="noBtn">No 😅</button>
+  </div>
+
+  <div id="message">
+    <p>¡Sabía que dirías que sí! 💞</p>
+    <p>Nos vemos en nuestra cita secreta ✨</p>
+    <p>Te espero, Flaquita 💕 — no llegues tarde 😉</p>
+  </div>
+
+  <!-- Botón invisible para iniciar la música si el navegador bloquea autoplay -->
+  <button id="startMusic"></button>
+
+  <!-- Música de fondo (Pixabay - libre de derechos) -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_29c5d46f76.mp3?filename=island-rhythms-soft-acoustic-guitar-background-music-139925.mp3" type="audio/mpeg">
+  </audio>
+
+  <canvas id="confetti"></canvas>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const message = document.getElementById('message');
+    const confettiCanvas = document.getElementById('confetti');
+    const ctx = confettiCanvas.getContext('2d');
+    const bgMusic = document.getElementById('bgMusic');
+    const startMusic = document.getElementById('startMusic');
+    let noClickCount = 0;
+
+    // Intentar reproducir música automáticamente
+    function startAudio() {
+      bgMusic.volume = 0.6;
+      bgMusic.play().catch(() => {
+        // Si falla autoplay, esperar primer toque
+        startMusic.addEventListener('click', () => {
+          bgMusic.play();
+        }, { once: true });
+      });
+    }
+    startAudio();
+
+    // Ajuste de tamaño del canvas
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Confetti
+    const confetti = [];
+    for (let i = 0; i < 150; i++) {
+      confetti.push({
+        x: Math.random() * confettiCanvas.width,
+        y: Math.random() * confettiCanvas.height,
+        r: Math.random() * 6 + 2,
+        d: Math.random() * 1 + 1,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+      });
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confetti.forEach(c => {
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2, false);
+        ctx.fillStyle = c.color;
+        ctx.fill();
+      });
+      updateConfetti();
+    }
+
+    function updateConfetti() {
+      confetti.forEach(c => {
+        c.y += c.d;
+        if (c.y > confettiCanvas.height) {
+          c.y = -10;
+          c.x = Math.random() * confettiCanvas.width;
+        }
+      });
+      requestAnimationFrame(drawConfetti);
+    }
+
+    // Botón "Sí"
+    yesBtn.addEventListener('click', () => {
+      message.style.display = 'block';
+      drawConfetti();
+      setTimeout(() => {
+        window.open('https://wa.me/573187447485?text=%C2%A1Acepto%20la%20cita%20sorpresa%20%F0%9F%98%8D%21', '_blank');
+      }, 1500);
+    });
+
+    // Frases divertidas "No"
+    const frasesNo = [
+      "¿Segura, Flaquita? 😢",
+      "Piénsalo otra vez 🥺",
+      "Ay no... mi corazoncito 💔",
+      "Vamos, di que sí 😇",
+      "No seas mala 😭",
+      "Te vas a arrepentir 😅",
+      "Prometo invitarte postre 🍰",
+      "Hay regalo sorpresa 🎁",
+      "Me vas a dejar con las flores 😢",
+      "¡Ni lo pienses! 😳",
+      "Soy irresistible, acéptalo 😎",
+      "Ok... pero lloraré fuerte 😭",
+      "Voy a escribirte un poema triste 📜",
+      "¿Y si te prometo helado? 🍦",
+      "Vamos, un sí no hace daño 💕"
+    ];
+
+    // Interacción con el botón "No"
+    noBtn.addEventListener('click', () => {
+      noClickCount++;
+      noBtn.textContent = frasesNo[noClickCount % frasesNo.length];
+      if (noClickCount > 5) {
+        const randomX = Math.random() * (window.innerWidth - 100);
+        const randomY = Math.random() * (window.innerHeight - 100);
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = randomX + 'px';
+        noBtn.style.top = randomY + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
