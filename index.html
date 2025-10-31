@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>💌 Cita de Halloween para mi Flaquita 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💌 Cita De Halloween Para Mi Flaquita 💕</title>
 
-<meta property="og:title" content="💌 Cita de Halloween para mi Flaquita 💕">
-<meta property="og:description" content="Una sorpresa espeluznantemente dulce te espera... 🎃💖">
+<meta property="og:title" content="💌 Cita De Halloween Para Mi Flaquita 💕">
+<meta property="og:description" content="Una Sorpresa Espeluznantemente Dulce Te Espera... 🎃💖">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/08/06/22/01/heart-2596111_1280.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://TU_ENLACE.vercel.app/">
@@ -15,8 +15,8 @@
   :root {
     --bg: #1a1a2e;
     --surface: #16213e;
-    --accent: #ff6b35;
-    --accent2: #b721ff;
+    --accent: #ff6b35; /* Naranja Halloween */
+    --accent2: #b721ff; /* Morado */
     --text: #f1f1f1;
     --shadow-light: rgba(255, 255, 255, 0.07);
     --shadow-dark: rgba(0, 0, 0, 0.5);
@@ -34,15 +34,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: 100dvh;
+    justify-content: center;
+    min-height: 100vh;
     margin: 0;
-    overflow-x: hidden;
+    overflow: hidden;
     color: var(--text);
-    padding: 20px 15px;
+    padding: 20px;
     position: relative;
   }
 
+  /* Textura sutil de fondo */
   body::before {
     content: "";
     position: absolute;
@@ -58,57 +59,58 @@
   .card {
     background: var(--surface);
     border-radius: 24px;
-    padding: 28px 20px;
+    padding: 32px;
     text-align: center;
-    width: 100%;
     max-width: 500px;
+    width: 100%;
     box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.5),
       inset 8px 8px 16px var(--shadow-dark),
       inset -8px -8px 16px var(--shadow-light);
     transition: transform 0.2s ease;
     position: relative;
-    margin-top: 20px;
+    overflow: hidden;
   }
 
   .card::after {
     content: "🎃";
     position: absolute;
-    top: 12px;
-    right: 18px;
-    font-size: 22px;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
     opacity: 0.3;
+    pointer-events: none;
   }
 
   h1 {
-    font-size: 1.7em;
+    font-size: 1.8em;
     color: var(--accent);
-    margin-bottom: 14px;
+    margin-bottom: 16px;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
   }
 
   p {
-    font-size: 1.05em;
+    font-size: 1.1em;
     color: #e0e0ff;
     margin-bottom: 12px;
     line-height: 1.5;
   }
 
   #botones {
-    margin-top: 22px;
+    margin-top: 25px;
     display: flex;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     flex-wrap: wrap;
   }
 
   button {
     font-family: inherit;
-    font-size: 1.05em;
+    font-size: 1.1em;
     border: none;
     border-radius: 16px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-weight: 700;
@@ -118,14 +120,13 @@
       inset 4px 4px 8px var(--shadow-dark),
       inset -4px -4px 8px var(--shadow-light);
     color: white;
-    min-width: 120px;
   }
 
   button:active {
     box-shadow: 
       inset 2px 2px 4px var(--shadow-dark),
       inset -2px -2px 4px var(--shadow-light);
-    transform: scale(0.97);
+    transform: scale(0.98);
   }
 
   #si {
@@ -142,7 +143,7 @@
     display: none;
     margin-top: 24px;
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
@@ -155,18 +156,18 @@
   .mensaje-card {
     background: rgba(22, 33, 62, 0.7);
     border-radius: 20px;
-    padding: 18px;
+    padding: 20px;
     box-shadow: 
       0 8px 20px rgba(0, 0, 0, 0.4),
       inset 6px 6px 12px var(--shadow-dark),
       inset -6px -6px 12px var(--shadow-light);
-    line-height: 1.5;
+    line-height: 1.6;
     backdrop-filter: blur(4px);
   }
 
   .mensaje-card p {
-    margin: 7px 0;
-    font-size: 1.15em;
+    margin: 8px 0;
+    font-size: 1.2em;
     color: var(--accent);
     text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
   }
@@ -174,8 +175,7 @@
   #inicio {
     position: absolute;
     top: 0; left: 0;
-    width: 100%;
-    height: 100dvh;
+    width: 100%; height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,19 +183,16 @@
     text-align: center;
     z-index: 10;
     background: var(--bg);
-    padding: 0 20px;
+    padding: 20px;
   }
 
   #inicio .card {
     animation: fadeIn 0.6s ease-out;
-    margin: 0;
   }
 
   #contenido {
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
-    width: 100%;
-    max-width: 500px;
   }
 
   canvas#confetti-canvas {
@@ -208,23 +205,7 @@
     z-index: 1;
   }
 
-  /* Calabaza animada */
-  #pumpkin {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px;
-    animation: glowPumpkin 2s infinite alternate;
-    z-index: 5;
-    text-shadow: 0 0 12px var(--accent);
-  }
-
-  @keyframes glowPumpkin {
-    from { opacity: 0.7; transform: scale(1); }
-    to { opacity: 1; transform: scale(1.05); }
-  }
-
-  /* Murciélagos */
+  /* Murciélagos en lugar de corazones */
   .bat {
     position: fixed;
     bottom: -10px;
@@ -233,6 +214,7 @@
     opacity: 0.85;
     z-index: 5;
     text-shadow: 0 0 6px var(--accent2);
+    filter: drop-shadow(0 0 3px rgba(183, 33, 255, 0.4));
   }
 
   @keyframes flyUp {
@@ -245,6 +227,7 @@
     to { opacity: 1; transform: scale(1); }
   }
 
+  /* Pequeños detalles */
   .pumpkin {
     display: inline-block;
     animation: pulse 2s infinite;
@@ -252,64 +235,49 @@
 
   @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-  }
-
-  /* Scroll suave al mensaje final */
-  html {
-    scroll-behavior: smooth;
+    50% { transform: scale(1.1); }
   }
 </style>
 </head>
 <body>
-  <!-- Calabaza decorativa -->
-  <div id="pumpkin">🎃</div>
-
   <!-- Pantalla inicial -->
   <div id="inicio">
     <div class="card">
-      <h2>🦇 ¿Te atreves a empezar la sorpresa? 🎃</h2>
-      <button id="empezar">¡Acepto el reto! 👻</button>
+      <h2>🦇 ¿Te Atreves A Empezar La Sorpresa? 🎃</h2>
+      <button id="empezar">¡Acepto El Reto! 👻</button>
     </div>
   </div>
 
   <!-- Contenido principal -->
   <div id="contenido" class="card">
-    <h1>💌 Cita de Halloween para mi Flaquita 💕</h1>
-    <p>¿Quieres venir a una cita <span class="pumpkin">secreta y espeluznante</span> conmigo? 😈</p>
-    <p id="subeVolumen">(Sube el volumen 🔊)</p>
+    <h1>💌 Cita De Halloween Para Mi Flaquita 💕</h1>
+    <p>¿Quieres Venir A Una Cita <span class="pumpkin">SECRETA Y ESPELUZNANTE</span> Conmigo? 😈</p>
+    <p id="subeVolumen">(Sube El Volumen 🔊)</p>
 
     <div id="botones">
-      <button id="si">Sí, ¡me encanta! 💀</button>
+      <button id="si">Sí, ¡Me Encanta! 💀</button>
       <button id="no">No... 👻</button>
     </div>
 
     <div id="mensajeFinal">
       <div class="mensaje-card">
-        <p>¡Sabía que dirías que sí! 💞</p>
-        <p>Nos vemos en nuestra cita de Halloween ✨</p>
-        <p>Te espero, Flaquita 💕 — no llegues tarde... o te atraparé 😉</p>
+        <p>¡Sabía Que Dirías Que Sí! 💞</p>
+        <p>Nos Vemos En Nuestra Cita De Halloween ✨</p>
+        <p>Te Espero, Flaquita 💕 — No llegues Tarde... O Te Atraparé 😉</p>
       </div>
     </div>
   </div>
 
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- Audios -->
   <audio id="musica" preload="auto" loop>
     <source src="whistling-ukulele-pop-playful-kids-background-422933.mp3" type="audio/mpeg">
-  </audio>
-  <!-- Sonido de murciélago (opcional) -->
-  <audio id="murcielago" preload="auto">
-    <source src="https://cdn.pixabay.com/audio/2022/03/17/audio_8a0d6a5e5f.mp3" type="audio/mpeg">
   </audio>
 
 <script>
   const musica = document.getElementById('musica');
   const sonidoPop = new Audio('pop-94319.mp3');
-  const sonidoMurcielago = document.getElementById('murcielago');
   sonidoPop.volume = 0.4;
-  sonidoMurcielago.volume = 0.5;
 
   const inicio = document.getElementById('inicio');
   const contenido = document.getElementById('contenido');
@@ -329,7 +297,7 @@
       console.warn("No se pudo reproducir la música:", err);
       mostrarBotonAudio();
     });
-    setInterval(crearMurcielago, 900);
+    setInterval(crearMurcielago, 800);
   }
 
   function mostrarBotonAudio() {
@@ -344,8 +312,8 @@
       transform: translateX(-50%);
       background: var(--surface);
       color: white;
-      font-size: 1.05em;
-      padding: 12px 22px;
+      font-size: 1.1em;
+      padding: 12px 24px;
       border: none;
       border-radius: 16px;
       cursor: pointer;
@@ -360,37 +328,39 @@
   }
 
   const frasesNo = [
-    "¿Segura? 😏","Piénsalo otra vez 💭","No puedes decirme que no 😜",
-    "Vamosss, di que sí 💘","Me romperás el corazón 💔","Inténtalo de nuevo 😅",
-    "No existe el 'no' en mi diccionario 😎","Dale al botón naranja mejor 🎃",
-    "El 'no' no aplica aquí 😜","Vamos, sé mi cita de Halloween 💞","Te prometo risas y dulces 🍬",
-    "No seas tímida 😌","Solo un 'sí' y serás la más feliz 💖","¿Y si te invito con calabazas? 🎃",
-    "A que no puedes resistirte 😘","Tu 'no' suena como un 'sí' disimulado 😏",
-    "Me estás haciendo sufrir 😭","Hazlo por mi corazóncito 💘","Te daré chocolates 🍫",
-    "Vamos, no te hagas la difícil 😍","Por faaa 🥺","Diana, no me rompas el corazón 💔",
-    "Te llevo serenata 🎸","Ya tengo los dulces listos 🍨"
+    "¿Segura? 😏","Piénsalo Otra Vez 💭","No Puedes Decirme Que No 😜","Te Tratare Como Reinita Que Eres👸",
+    "Vamosss, Di Que Sí 💘","Me Romperás El Corazón 💔","Inténtalo De Nuevo 😅","Te Dare Algunos Besitos 😘",
+    "No Existe El 'No' En Mi Diccionario 😎","Dale Al Botón Naranja Mejor 🎃",
+    "El 'No' No Aplica Aquí 😜","Vamos, Sé Mi Cita De Halloween 💞","Te Prometo Risas Y Dulces 🍬",
+    "No Seas Tímida 😌","Solo Un 'Sí' Y Serás La Más Feliz 💖","¿Y Si Te Invito Con Calabazas? 🎃",
+    "A Que No Puedes Resistirte 😘","Tu 'No' Suena Como Un 'Sí' Disimulado 😏",
+    "Me Estás Haciendo Sufrir 😭","Hazlo Por Mi Corazoncito 💘","Te Daré Chocolates 🍫",
+    "Vamos, No Te Hagas La Difícil 😍","Por Faaa 🥺","Diana, No Me Rompas El Corazón 💔",
+    "Te Llevo Serenata 🎸","Ya Tengo Los Dulces Listos 🍨"
   ];
 
   let contadorNo = 0;
   botonNo.addEventListener('click', () => {
     botonNo.textContent = frasesNo[contadorNo % frasesNo.length];
     contadorNo++;
-    const x = Math.random() * 180 - 90;
-    const y = Math.random() * 180 - 90;
+    const x = Math.random() * 200 - 100;
+    const y = Math.random() * 200 - 100;
     botonNo.style.transform = `translate(${x}px, ${y}px)`;
-    
-    // Alternar entre pop y murciélago
-    if (Math.random() > 0.5) {
-      reproducirAudio(sonidoMurcielago);
-    } else {
-      reproducirPop();
-    }
+    reproducirPop();
   });
 
-  function reproducirAudio(audio) {
-    audio.currentTime = 0;
-    audio.play().catch(() => {});
-  }
+  botonSi.addEventListener('click', () => {
+    contenedorBotones.style.display = 'none';
+    mensajeFinal.classList.add('show');
+    lanzarConfetiHalloween();
+    reproducirPop();
+    musica.play().catch(() => {});
+
+    const mensaje = "¡Acepto La Cita De Halloween Contigo! 🎃 Estoy lista Para Nuestro Momento Mágico Y Espeluznante... Te espero con el corazón latiendo fuerte 💓 ¡Nos vemos pronto, mi amor! 😘✨";
+    const numero = "573186500044";
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.location.href = url;
+  });
 
   function reproducirPop() {
     sonidoPop.currentTime = 0;
@@ -401,25 +371,7 @@
     });
   }
 
-  botonSi.addEventListener('click', () => {
-    contenedorBotones.style.display = 'none';
-    mensajeFinal.classList.add('show');
-    
-    // Scroll suave al mensaje
-    setTimeout(() => {
-      mensajeFinal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
-    
-    lanzarConfetiHalloween();
-    reproducirPop();
-    musica.play().catch(() => {});
-
-    const mensaje = "¡Acepto la cita de Halloween contigo! 🎃 Estoy lista para nuestro momento mágico y espeluznante... Te espero con el corazón latiendo fuerte 💓 ¡Nos vemos pronto, mi amor! 😘✨";
-    const numero = "573187447485";
-    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.location.href = url;
-  });
-
+  // 🕷️ Confeti de Halloween
   function lanzarConfetiHalloween() {
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
@@ -471,6 +423,7 @@
     setTimeout(() => clearInterval(interval), 5000);
   }
 
+  // 🦇 Murciélagos volando
   function crearMurcielago() {
     const murcielago = document.createElement('div');
     murcielago.classList.add('bat');
