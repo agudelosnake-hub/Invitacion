@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>💌 Cita De Halloween Para Mi Flaquita 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>💌 CITA DE HALLOWEEN DE CÉSAR PARA TI 💕</title>
 
-<meta property="og:title" content="💌 Cita De Halloween Para Mi Flaquita 💕">
-<meta property="og:description" content="Una Sorpresa Espeluznantemente Dulce Te Espera... 🎃💖">
+<meta property="og:title" content="💌 Cita De Halloween De César Para Ti 💕">
+<meta property="og:description" content="CÉSAR TE PREPARÓ UNA SORPRESA ESPELUZNANTEMENTE DULCE...🎃💖">
 <meta property="og:image" content="https://cdn.pixabay.com/photo/2017/08/06/22/01/heart-2596111_1280.jpg">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://TU_ENLACE.vercel.app/">
@@ -15,8 +15,8 @@
   :root {
     --bg: #1a1a2e;
     --surface: #16213e;
-    --accent: #ff6b35; /* Naranja Halloween */
-    --accent2: #b721ff; /* Morado */
+    --accent: #ff6b35;
+    --accent2: #b721ff;
     --text: #f1f1f1;
     --shadow-light: rgba(255, 255, 255, 0.07);
     --shadow-dark: rgba(0, 0, 0, 0.5);
@@ -34,16 +34,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    justify-content: flex-start;
+    min-height: 100dvh;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     color: var(--text);
-    padding: 20px;
+    padding: 20px 15px;
     position: relative;
   }
 
-  /* Textura sutil de fondo */
   body::before {
     content: "";
     position: absolute;
@@ -59,58 +58,57 @@
   .card {
     background: var(--surface);
     border-radius: 24px;
-    padding: 32px;
+    padding: 28px 20px;
     text-align: center;
-    max-width: 500px;
     width: 100%;
+    max-width: 500px;
     box-shadow: 
       0 10px 30px rgba(0, 0, 0, 0.5),
       inset 8px 8px 16px var(--shadow-dark),
       inset -8px -8px 16px var(--shadow-light);
     transition: transform 0.2s ease;
     position: relative;
-    overflow: hidden;
+    margin-top: 20px;
   }
 
   .card::after {
     content: "🎃";
     position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
+    top: 12px;
+    right: 18px;
+    font-size: 22px;
     opacity: 0.3;
-    pointer-events: none;
   }
 
   h1 {
-    font-size: 1.8em;
+    font-size: 1.7em;
     color: var(--accent);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
   }
 
   p {
-    font-size: 1.1em;
+    font-size: 1.05em;
     color: #e0e0ff;
     margin-bottom: 12px;
     line-height: 1.5;
   }
 
   #botones {
-    margin-top: 25px;
+    margin-top: 22px;
     display: flex;
     justify-content: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
   }
 
   button {
     font-family: inherit;
-    font-size: 1.1em;
+    font-size: 1.05em;
     border: none;
     border-radius: 16px;
-    padding: 14px 28px;
+    padding: 12px 24px;
     cursor: pointer;
     transition: all 0.2s ease;
     font-weight: 700;
@@ -120,13 +118,14 @@
       inset 4px 4px 8px var(--shadow-dark),
       inset -4px -4px 8px var(--shadow-light);
     color: white;
+    min-width: 120px;
   }
 
   button:active {
     box-shadow: 
       inset 2px 2px 4px var(--shadow-dark),
       inset -2px -2px 4px var(--shadow-light);
-    transform: scale(0.98);
+    transform: scale(0.97);
   }
 
   #si {
@@ -143,7 +142,7 @@
     display: none;
     margin-top: 24px;
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
 
@@ -156,7 +155,7 @@
   .mensaje-card {
     background: rgba(22, 33, 62, 0.7);
     border-radius: 20px;
-    padding: 20px;
+    padding: 18px;
     box-shadow: 
       0 8px 20px rgba(0, 0, 0, 0.4),
       inset 6px 6px 12px var(--shadow-dark),
@@ -166,16 +165,24 @@
   }
 
   .mensaje-card p {
-    margin: 8px 0;
-    font-size: 1.2em;
+    margin: 7px 0;
+    font-size: 1.15em;
     color: var(--accent);
     text-shadow: 0 0 8px rgba(255, 107, 53, 0.3);
+  }
+
+  .firma {
+    margin-top: 12px;
+    font-style: italic;
+    color: #ff8c42;
+    font-weight: 600;
   }
 
   #inicio {
     position: absolute;
     top: 0; left: 0;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,16 +190,19 @@
     text-align: center;
     z-index: 10;
     background: var(--bg);
-    padding: 20px;
+    padding: 0 20px;
   }
 
   #inicio .card {
     animation: fadeIn 0.6s ease-out;
+    margin: 0;
   }
 
   #contenido {
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
+    width: 100%;
+    max-width: 500px;
   }
 
   canvas#confetti-canvas {
@@ -205,7 +215,21 @@
     z-index: 1;
   }
 
-  /* Murciélagos en lugar de corazones */
+  #pumpkin {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px;
+    animation: glowPumpkin 2s infinite alternate;
+    z-index: 5;
+    text-shadow: 0 0 12px var(--accent);
+  }
+
+  @keyframes glowPumpkin {
+    from { opacity: 0.7; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.05); }
+  }
+
   .bat {
     position: fixed;
     bottom: -10px;
@@ -214,7 +238,6 @@
     opacity: 0.85;
     z-index: 5;
     text-shadow: 0 0 6px var(--accent2);
-    filter: drop-shadow(0 0 3px rgba(183, 33, 255, 0.4));
   }
 
   @keyframes flyUp {
@@ -227,7 +250,6 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  /* Pequeños detalles */
   .pumpkin {
     display: inline-block;
     animation: pulse 2s infinite;
@@ -235,23 +257,31 @@
 
   @keyframes pulse {
     0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.08); }
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 </style>
 </head>
 <body>
-  <!-- Pantalla inicial -->
+  <div id="pumpkin">🎃</div>
+
+  <!-- Pantalla inicial con nombre de César -->
   <div id="inicio">
     <div class="card">
-      <h2>🦇 ¿Te Atreves A Empezar La Sorpresa? 🎃</h2>
-      <button id="empezar">¡Acepto El Reto! 👻</button>
+      <h2>🦇 ¡CÉSAR TE PREPARÓ UNA SORPRESA DE HALLOWEEN! 🎃</h2>
+      <p>PARA TI DIANA</p>
+      <p style="margin: 16px 0; color: #e0e0ff;">¿Te Atreves A Descubrirla?</p>
+      <button id="empezar">¡QUIERO VERLA! 👻</button>
     </div>
   </div>
 
   <!-- Contenido principal -->
   <div id="contenido" class="card">
-    <h1>💌 Cita De Halloween Para Mi Flaquita 💕</h1>
-    <p>¿Quieres Venir A Una Cita <span class="pumpkin">SECRETA Y ESPELUZNANTE</span> Conmigo? 😈</p>
+    <h1>💌 CITA DE HALLOWEEN DE CÉSAR PARA TI 💕</h1>
+    <p>¿Quieres Venir A Una Cita <span class="pumpkin">Secreta Y Espeluznante</span> Conmigo? 😈</p>
     <p id="subeVolumen">(Sube El Volumen 🔊)</p>
 
     <div id="botones">
@@ -261,9 +291,12 @@
 
     <div id="mensajeFinal">
       <div class="mensaje-card">
-        <p>¡Sabía Que Dirías Que Sí! 💞</p>
-        <p>Nos Vemos En Nuestra Cita De Halloween ✨</p>
-        <p>Te Espero, Flaquita 💕 — No llegues Tarde... O Te Atraparé 😉</p>
+        <p>Sabía Que Dirías Que Sí…</p>
+        <p>Porque Desde Que Te Vi, Supe Que Serías Mía Esta Noche. 😏</p>
+        <p>Prepárate, Flaquita…</p>
+        <p>Porque Esta Cita No Será Solo Dulce…</p>
+        <p>¡Tendremos Baile Bajo La Luna Y Será Inolvidable! 💋✨</p>
+        <p class="firma">— César, Tu Hechicero De Halloween 🦇</p>
       </div>
     </div>
   </div>
@@ -276,9 +309,6 @@
 
 <script>
   const musica = document.getElementById('musica');
-  const sonidoPop = new Audio('pop-94319.mp3');
-  sonidoPop.volume = 0.4;
-
   const inicio = document.getElementById('inicio');
   const contenido = document.getElementById('contenido');
   const botonEmpezar = document.getElementById('empezar');
@@ -286,6 +316,12 @@
   const botonSi = document.getElementById('si');
   const mensajeFinal = document.getElementById('mensajeFinal');
   const contenedorBotones = document.getElementById('botones');
+
+  function reproducirPop() {
+    const pop = new Audio('pop-94319.mp3');
+    pop.volume = 0.4;
+    pop.play().catch(() => {});
+  }
 
   botonEmpezar.addEventListener('click', playMusic);
 
@@ -297,7 +333,7 @@
       console.warn("No se pudo reproducir la música:", err);
       mostrarBotonAudio();
     });
-    setInterval(crearMurcielago, 800);
+    setInterval(crearMurcielago, 900);
   }
 
   function mostrarBotonAudio() {
@@ -312,8 +348,8 @@
       transform: translateX(-50%);
       background: var(--surface);
       color: white;
-      font-size: 1.1em;
-      padding: 12px 24px;
+      font-size: 1.05em;
+      padding: 12px 22px;
       border: none;
       border-radius: 16px;
       cursor: pointer;
@@ -328,23 +364,42 @@
   }
 
   const frasesNo = [
-    "¿Segura? 😏","Piénsalo Otra Vez 💭","No Puedes Decirme Que No 😜","Te Tratare Como Reinita Que Eres👸",
-    "Vamosss, Di Que Sí 💘","Me Romperás El Corazón 💔","Inténtalo De Nuevo 😅","Te Dare Algunos Besitos 😘",
-    "No Existe El 'No' En Mi Diccionario 😎","Dale Al Botón Naranja Mejor 🎃",
-    "El 'No' No Aplica Aquí 😜","Vamos, Sé Mi Cita De Halloween 💞","Te Prometo Risas Y Dulces 🍬",
-    "No Seas Tímida 😌","Solo Un 'Sí' Y Serás La Más Feliz 💖","¿Y Si Te Invito Con Calabazas? 🎃",
-    "A Que No Puedes Resistirte 😘","Tu 'No' Suena Como Un 'Sí' Disimulado 😏",
-    "Me Estás Haciendo Sufrir 😭","Hazlo Por Mi Corazoncito 💘","Te Daré Chocolates 🍫",
-    "Vamos, No Te Hagas La Difícil 😍","Por Faaa 🥺","Diana, No Me Rompas El Corazón 💔",
-    "Te Llevo Serenata 🎸","Ya Tengo Los Dulces Listos 🍨"
+    "¿Segura? 😏",
+    "Piénsalo Otra Vez 💭",
+    "No Puedes Decirme Que No 😜",
+    "Vamosss, Di Que Sí 💘",
+    "No Puedes Negarte… ¡Ya Planeé Cómo Robarte Tu Primer Beso Esta Noche! 😈",
+    "Me Romperás El Corazón 💔",
+    "Inténtalo De Nuevo 😅",
+    "No Existe El 'No' En Mi Diccionario 😎",
+    "Aquí Los Besos Están Garantizados… ¿Sigues Diciendo Que No? 💋",
+    "Dale Al Botón Naranja Mejor 🎃",
+    "El 'No' No Aplica Aquí 😜",
+    "Vamos, Sé Mi Cita De Halloween 💞",
+    "Te Prometo Risas, Dulces… Y Besos 🍬💋",
+    "No Seas Tímida 😌",
+    "Solo Un 'Sí' Y Serás La Más Feliz 💖",
+    "¿Y Si Te Invito Con Calabazas Y Un Beso? 🎃💋",
+    "A Que No Puedes Resistirte 😘",
+    "Tu 'No' Suena Como Un 'Sí' Disimulado 😏",
+    "Me Estás Haciendo Sufrir 😭",
+    "Si Dices Que No, Me Robaré Un Beso Igual 😏",
+    "Hazlo Por Mi Corazóncito 💘",
+    "Te Daré Chocolates… Y Quizás Un Beso 🍫💋",
+    "Vamos, No Te Hagas La Difícil 😍",
+    "Por Faaa 🥺",
+    "Diana, No Me Rompas El Corazón 💔",
+    "Te Llevo Serenata… Y Me Robaré Un Beso 🎸💋",
+    "Ya Tengo Los Dulces Listos 🍨",
+    "Hasta Las Brujas Besan En Halloween… ¿Y Tú? 🧙‍♀️💋"
   ];
 
   let contadorNo = 0;
   botonNo.addEventListener('click', () => {
     botonNo.textContent = frasesNo[contadorNo % frasesNo.length];
     contadorNo++;
-    const x = Math.random() * 200 - 100;
-    const y = Math.random() * 200 - 100;
+    const x = Math.random() * 180 - 90;
+    const y = Math.random() * 180 - 90;
     botonNo.style.transform = `translate(${x}px, ${y}px)`;
     reproducirPop();
   });
@@ -352,26 +407,23 @@
   botonSi.addEventListener('click', () => {
     contenedorBotones.style.display = 'none';
     mensajeFinal.classList.add('show');
+    
+    setTimeout(() => {
+      mensajeFinal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+    
     lanzarConfetiHalloween();
     reproducirPop();
     musica.play().catch(() => {});
 
-    const mensaje = "¡Acepto La Cita De Halloween Contigo! 🎃 Estoy lista Para Nuestro Momento Mágico Y Espeluznante... Te espero con el corazón latiendo fuerte 💓 ¡Nos vemos pronto, mi amor! 😘✨";
+    const mensaje = "Sí, César… ¡Acepto Tu Cita De Halloween! 🎃%0A" +
+                     "Te Espero Con Muchas Ganas…%0A" +
+                     "¡No Faltes, O Iré A Buscarte Yo! 👻✨"
     const numero = "573186500044";
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.location.href = url;
   });
 
-  function reproducirPop() {
-    sonidoPop.currentTime = 0;
-    sonidoPop.play().catch(() => {
-      const fallback = new Audio('pop-94319.mp3');
-      fallback.volume = 0.4;
-      fallback.play().catch(() => {});
-    });
-  }
-
-  // 🕷️ Confeti de Halloween
   function lanzarConfetiHalloween() {
     const canvas = document.getElementById('confetti-canvas');
     const ctx = canvas.getContext('2d');
@@ -423,7 +475,6 @@
     setTimeout(() => clearInterval(interval), 5000);
   }
 
-  // 🦇 Murciélagos volando
   function crearMurcielago() {
     const murcielago = document.createElement('div');
     murcielago.classList.add('bat');
